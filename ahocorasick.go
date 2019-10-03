@@ -2,10 +2,8 @@ package goahocorasick
 
 import (
 	"fmt"
-)
 
-import (
-	"github.com/anknown/darts"
+	godarts "github.com/anknown/darts"
 )
 
 const FAIL_STATE = -1
@@ -74,6 +72,7 @@ func (m *Machine) Build(keywords [][]rune) (err error) {
 			m.setF(n.Base, outState)
 		}
 		queue = append(queue, node.Children...)
+		queue[0] = nil
 		queue = queue[1:]
 	}
 
